@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package calculator;
+
+option go_package = "./pb";
+
+// Calculator service definition
+service Calculator {
+  // Function that adds two numbers
+  rpc Add(Input) returns (Output);
+
+  // Function that divides one number by other
+  rpc Divide(Input) returns (Output);
+
+  // Function that sums an array of values
+  rpc Sum(RepeatedInput) returns (Output);
+
+  // Function that multiplies two numbers
+  rpc Multiply(Input) returns (Output);
+
+  // Function that subtracts two values
+  rpc Subtract(Input) returns (Output);
+}
+
+// Input message with definition of values
+message Input {
+  int64 Operand1 = 1;
+  int64 Operand2 = 2;
+}
+
+// Output method with
+message Output {
+  int64 Result = 1;
+}
+
+message RepeatedInput {
+  // Receives a list of values
+  repeated int64 numbers = 1;
+}
